@@ -1,0 +1,9 @@
+---
+- name: SET THE MOTD BANNER
+  hosts: cml
+  gather_facts: no
+  tasks:
+    - name: Configure banner
+      cisco.ios.ios_config:
+        lines:
+          - banner motd ^Authorized access only - {{ inventory_hostname }}^

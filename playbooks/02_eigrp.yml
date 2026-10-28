@@ -1,0 +1,12 @@
+---
+- name: CONFIGURE EIGRP
+  hosts: routers
+  gather_facts: no
+  tasks:
+    - name: Enable EIGRP 100
+      cisco.ios.ios_config:
+        parents: router eigrp 100
+        lines:
+          - no auto-summary
+          - network 192.168.100.0 0.0.0.255
+          - network 10.0.0.0 0.0.0.255
